@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics</title>
+    <link rel="stylesheet" href="{% static 'My_portfolio/acadamics.css' %}">
+</head>
+<body>
+<header class="navbar">
+    <div class="container">
+        <h1 class="logo">{{intro.logo_name}}</h1>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#resume">Resume</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="page-header">
+    <div class="container">
+        <h2>Academic Details</h2>
+        <p>Education, results, certifications & resume</p>
+    </div>
+</section>
+<section id="education" class="section">
+    <div class="container">
+        <h3 class="section-title">Education</h3>
+        <div class="edu-horizontal">
+             {% for  acadamic in acadamics %}
+            <div class="edu-item">
+                <span class="edu-dot"></span>
+               
+                <div class="edu-card">
+             <a href="{{ acadamic.result_pdf.url }}" target="_blank"><h4>{{acadamic.qualification}}</h4></a>
+                    <p>{{acadamic.board}}</p>
+                    <p>{{acadamic.institute_name}}</p>
+
+                    <div class="edu-score">
+                        <span>Percentage</span>
+                        <strong>{{acadamic.percentage}}%</strong>
+                    </div>
+
+                    <div class="edu-progress">
+                        <div class="edu-progress-fill" style="width: {{acadamic.percentage}}%;"></div>
+                    </div>
+                  <span class="edu-year">{{acadamic.start_year}} – {{acadamic.end_year}}</span>
+                </div>
+            </div>
+            <div class="edu-line"></div>
+                {% endfor %}
+            
+        </div>
+    </div>
+</section>
+
+<!-- ===== RESULTS ===== -->
+<section id="results" class="section alt-section">
+    <div class="container">
+        <h3 class="section-title">Academic Results</h3>
+
+        <div class="result-grid">
+            {% for sem in semester %}
+            <a href="{{ sem.semester_result.url }}" target="_blank"  class="result-card">Semester {{sem.semester_number}}</a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- ===== CERTIFICATES ===== -->
+<section id="certificates" class="section">
+    <div class="container">
+        <h3 class="section-title">Certificates</h3>
+        {% for certificate in certificates %}
+        <ul class="certificate-list">
+            <li><a href="{{ certificate.certificate_pdf.url }}" target="_blank">{{certificate.certificate_name}}</a></li>
+        </ul>
+        {% endfor %}
+    </div>
+</section>
+
+<section id="resume" class="section alt-section">
+    <div class="container resume-center">
+        <a href="{{ intro.resume_pdf.url }}" class="resume-card" download>
+            <h3>Download Resume</h3>
+            <p>PDF Format</p>
+        </a>
+    </div>
+</section>
+<footer class="footer">
+    <p>© 2026 {{ intro.footer_name }}</p>
+</footer>
+
+</body>
+</html>

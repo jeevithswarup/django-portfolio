@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Project Details</title>
+    <link rel="stylesheet" href="{% static 'My_portfolio/project_detail.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="container">
+        <h1 class="logo">{{intro.logo_name}}</h1>
+        <a href="/" class="back-link">← Back to Home</a>
+    </div>
+</header>
+
+<section class="project-detail">
+    
+
+    <div class="container">
+        <h2 class="project-title">{{project.title}}</h2>
+
+        <p class="project-description">
+           {{project.detialed_description}}
+        </p>
+<!-- ===== KEY FEATURES ===== -->
+<div class="key-features">
+    <h3>Key Features</h3>
+    <ul>
+          {% for feature in project.features.all %}
+            <li>{{ feature.feature_text }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+        <div class="project-info">
+            <p><strong>Technologies:</strong>{{project.tech_stack}}</p>
+            <p><strong>Category:</strong> {{project.Category}}</p>
+            <p><strong>Status:</strong>{{project.status}}</p>
+        </div>
+       
+
+        <div class="project-actions">
+            <a href="{{project.github_link}}" class="btn">View GitHub</a>
+            {% if project.project_pdf %}
+            <a href="{{ project.project_pdf.url }}" class="btn btn-success" target="_blank">Download PPT</a>
+            {% endif %}
+        </div>
+
+    </div>
+   
+
+</section>
+
+<footer class="footer">
+    <p>© 2026 {{intro.footer_name}}. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

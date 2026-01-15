@@ -1,0 +1,152 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeevith</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'My_portfolio/home.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+
+</head>
+<body>
+    
+    <header class="navbar">
+        <div class="container">
+            <h1 class="logo">{{ intro.logo_name }}</h1>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="/acadamics">Acadamics</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<section id="home" class="hero">
+    <div class="container hero-content">
+
+        <div class="hero-text">
+            <h2>Hi, I'm <span>{{intro.profile_name}}</span></h2>
+            <h3>{{intro.role}}</h3>
+            <p>
+                {{intro.introduction}}
+            </p>
+  
+
+            <div class="hero-buttons">
+                <a href="#projects" class="btn">View Projects</a>
+                <a href="#contact" class="btn btn-outline">Contact Me</a>
+            </div>
+        </div>
+     
+        <div class="hero-image">
+            <img src="{{ intro.profile_img.url}}" alt="{{ intro.profile_name}}">
+        </div>
+         
+    </div>
+   
+</section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                {{intro.about_me}}
+            </p>
+        </div>
+    </section>
+    
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills</h2>
+<div class="skills-grid">
+    {% for skill  in skills %}
+    <div class="skill-card">
+        
+        <div class="icon-img">
+            <i class="{{skill.icon}}"></i>
+            <p>{{skill.skill_name}}</p>
+        </div>
+        
+    </div>
+    {% endfor %}
+</div>
+ </section>
+<section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            {% for project in projects %}
+            <div class="project-card">
+
+                <!-- Project Image -->
+                <div class="project-image">
+                    {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.project_name }}">
+                    {% else %}
+                    <img src="{% static 'project_images/secure_authentication.jpg' %}" alt="Default project image">
+                    {% endif %}
+                </div>
+
+                <!-- Content -->
+                <div class="project-content">
+                    <h3>{{ project.title }}</h3>
+                    <p>{{ project.short_description }}</p>
+
+                    <a href="{% url 'Project' project.id %}" class="project-btn">
+                        View project →
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    </section>
+
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+
+            <form method="POST" action="{% url 'contact' %}" class="contact-form">
+                 {% csrf_token %}
+                <input type="text" placeholder="Your Name" name="name">
+                <input type="email" placeholder="Your Email" name="email">
+                <textarea placeholder="Your Message" name="message"></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+  <section class="social-grid">
+<div class="social-links">
+    <a href="https://www.linkedin.com/in/jeevith-swarup-tuta-284607345/" target="_blank" class="linkedin">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+
+    <a href="https://github.com/jeevithswarup" target="_blank" class="github">
+        <i class="fab fa-github"></i>
+    </a>
+
+    <a href="https://wa.me/8280669972" target="_blank" class="whatsapp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <a href="mailto:jeevithswaruptuta@gmail.com" class="email">
+        <i class="fas fa-envelope"></i>
+    </a>
+</div>
+</section>
+    <footer class="footer">
+        <p>© 2026 {{intro.footer_name}}. All rights reserved.</p>
+    </footer>
+</body>
+</html>

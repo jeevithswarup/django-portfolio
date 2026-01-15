@@ -1,0 +1,426 @@
+/* ================= RESET ================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    background: #0f172a;
+    color: #e5e7eb;
+    line-height: 1.6;
+}
+
+/* ================= COMMON ================= */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.section {
+    padding: 5rem 0;
+}
+
+.alt-section {
+    background: #020617;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: #38bdf8;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    background: rgba(2, 6, 23, 0.9);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #1e293b;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 0;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #38bdf8;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #e5e7eb;
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #38bdf8;
+    left: 0;
+    bottom: -6px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ================= PAGE HEADER ================= */
+.page-header {
+    background: radial-gradient(circle at top, #0f172a, #020617);
+    text-align: center;
+    padding: 4.5rem 0;
+}
+
+.page-header h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.page-header p {
+    color: #94a3b8;
+}
+
+/* ================= EDUCATION ================= */
+.edu-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.edu-item {
+    position: relative;
+    flex: 1;
+    min-width: 250px;
+}
+
+.edu-dot {
+    width: 14px;
+    height: 14px;
+    background: #38bdf8;
+    border-radius: 50%;
+    position: absolute;
+    top: -7px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.edu-line {
+    flex: 0.2;
+    height: 2px;
+    background: #1e293b;
+}
+
+.edu-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    border-radius: 14px;
+    padding: 1.8rem;
+    margin-top: 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.edu-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(56, 189, 248, 0.2);
+}
+
+.edu-card h4 {
+    color: #38bdf8;
+    margin-bottom: 0.4rem;
+}
+
+.edu-card span {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+a{
+    text-decoration: none;
+}
+
+/* ================= RESULTS ================= */
+.result-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.result-card {
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 2.2rem;
+    text-align: center;
+    border-radius: 16px;
+    text-decoration: none;
+    color: #e5e7eb;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-8px);
+    background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+    color: #020617;
+}
+
+/* ================= CERTIFICATES ================= */
+.certificate-list {
+    max-width: 500px;
+    margin: auto;
+    list-style: none;
+}
+
+.certificate-list li {
+    margin-bottom: 1.2rem;
+}
+
+.certificate-list a {
+    display: block;
+    background: #020617;
+    border: 1px solid #1e293b;
+    padding: 1rem 1.4rem;
+    border-radius: 12px;
+    color: #e5e7eb;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.certificate-list a:hover {
+    background: #38bdf8;
+    color: #020617;
+    transform: translateX(6px);
+}
+
+/* ================= RESUME ================= */
+.resume-center {
+    display: flex;
+    justify-content: center;
+}
+
+.resume-card {
+    background: linear-gradient(135deg, #3b82f6, #2563eb); /* softer professional blues */
+    color: #ffffff; /* white text for clarity */
+    padding: 2.5rem 4rem;
+    border-radius: 16px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 8px 24px rgba(37, 99, 235, 0.25); /* subtle shadow */
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    cursor: pointer; /* button-like feel */
+}
+
+.resume-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8); /* darker hover gradient */
+}
+
+.resume-card h3 {
+    font-size: 1.6rem;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+}
+
+/* ================= FOOTER ================= */
+.footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background: #111827; /* softer dark gray instead of pure navy */
+    border-top: 1px solid #1f2937;
+    font-size: 0.9rem;
+    color: #9ca3af; /* neutral gray text */
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+    .nav-links {
+        gap: 1.2rem;
+    }
+
+    .edu-line {
+        display: none;
+    }
+
+    .resume-card {
+        padding: 2rem;
+        width: 90%;
+    }
+}
+/* ===== EDUCATION SCORE ADDON ===== */
+
+.edu-score {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.edu-score span {
+    color: #94a3b8;
+}
+
+.edu-score strong {
+    color: #38bdf8;
+    font-weight: 600;
+}
+
+/* Progress bar */
+.edu-progress {
+    margin-top: 0.4rem;
+    height: 8px;
+    background: #1e293b;
+    border-radius: 50px;
+    overflow: hidden;
+}
+
+.edu-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #38bdf8, #0ea5e9);
+}
+
+/* Year text */
+.edu-year {
+    display: block;
+    margin-top: 0.8rem;
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* Highlight current degree */
+.highlight-edu {
+    border: 1px solid #38bdf8;
+}
+/* ================= MOBILE RESPONSIVE FIX ================= */
+
+/* Tablets & below */
+@media (max-width: 768px) {
+
+    /* Navbar */
+    .navbar .container {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    /* Page Header */
+    .page-header h2 {
+        font-size: 2rem;
+    }
+
+    .page-header p {
+        font-size: 0.95rem;
+    }
+
+    /* Education Section */
+    .edu-horizontal {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .edu-item {
+        width: 100%;
+    }
+
+    .edu-dot {
+        display: none;
+    }
+
+    .edu-card {
+        margin-top: 0;
+    }
+
+    .edu-line {
+        display: none;
+    }
+
+    /* Results Section */
+    .result-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .result-card {
+        padding: 1.6rem;
+        font-size: 1rem;
+    }
+
+    /* Certificates */
+    .certificate-list {
+        padding: 0 10px;
+    }
+
+    /* Resume */
+    .resume-card {
+        width: 100%;
+        padding: 2rem;
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    .section {
+        padding: 3.5rem 0;
+    }
+
+    .section-title {
+        font-size: 1.6rem;
+    }
+
+    .page-header h2 {
+        font-size: 1.7rem;
+    }
+
+    .edu-card {
+        padding: 1.4rem;
+    }
+
+    .edu-card h4 {
+        font-size: 1.1rem;
+    }
+
+    .edu-score {
+        font-size: 0.85rem;
+    }
+
+    .result-card {
+        font-size: 0.95rem;
+    }
+
+    .resume-card h3 {
+        font-size: 1.3rem;
+    }
+}
