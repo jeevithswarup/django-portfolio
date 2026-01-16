@@ -126,3 +126,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# settings.py
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://django-portfolio-yd0b.onrender.com",
+    "http://localhost",
+]
