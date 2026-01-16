@@ -15,7 +15,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "jeevithswarup-portfolio.onrender.com",
+    "django-portfolio-yd0b.onrender.com",
     "localhost", 
     "127.0.0.1",
 ]
