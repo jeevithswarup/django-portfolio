@@ -50,7 +50,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django.middleware.security.SecurityMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
 ]
@@ -124,14 +123,12 @@ USE_TZ = True
 STATIC_URL = 'static/' 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-import os
 
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': os.environ.get('Portfolio_Bunny'),
-    'API_KEY': os.environ.get('669618247251947'),
-    'API_SECRET': os.environ.get('-R9K9xUYVCAvVFwOsrIdHgHYZLE'),
+    'CLOUD_NAME': os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    'API_KEY': os.environ.get('CLOUDINARY_API_KEY'),
+    'API_SECRET': os.environ.get('CLOUDINARY_API_SECRET'),
 }
-
 
 
 
