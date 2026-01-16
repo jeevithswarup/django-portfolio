@@ -15,7 +15,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    "django-portfolio-yd0b.onrender.com",
+    "jeevithswarup-portfolio.onrender.com",
     "localhost", 
     "127.0.0.1",
 ]
@@ -32,6 +32,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
     'My_portfolio',
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -115,8 +117,15 @@ USE_TZ = True
 
 STATIC_URL = 'static/' 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+
+import os
+
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': os.environ.get('Portfolio_Bunny'),
+    'API_KEY': os.environ.get('669618247251947'),
+    'API_SECRET': os.environ.get('-R9K9xUYVCAvVFwOsrIdHgHYZLE'),
+}
+
 
 
 
