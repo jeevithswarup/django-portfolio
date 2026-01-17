@@ -32,7 +32,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
-    'My_portfolio',
+    'My_portfolio.apps.MyPortfolioConfig',
     'cloudinary',
     'cloudinary_storage',
 ]
@@ -93,9 +93,10 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
 
 DATABASES = {
-    'default':dj_database_url.parse(os.environ.get('DATABASE_URL'))
-       
-    
+    'default':dj_database_url.parse(os.environ.get('DATABASE_URL'),
+     conn_max_age=600,
+     ssl_require=True,  
+    )
 }
 
 
