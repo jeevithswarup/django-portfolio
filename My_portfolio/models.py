@@ -1,5 +1,7 @@
 
 from django.db import models
+from cloudinary.models import CloudinaryField
+
 
 
 class Projects(models.Model):
@@ -9,8 +11,9 @@ class Projects(models.Model):
     tech_stack=models.CharField(max_length=300)
     Category=models.CharField(max_length=50,default='Backend Developer')
     status=models.CharField(max_length=50,default='In Progress')
-    image=models.ImageField(upload_to='project_images/', blank=True, null=True)
+    image=models.ImageField(upload_to="project_image/",blank=True,null=True)
     project_pdf = models.FileField(upload_to="project_pdfs/",blank=True,null=True)
+   
     github_link=models.URLField(blank=True)
     
     def __str__(self):
