@@ -8,9 +8,10 @@
     <link rel="stylesheet" href="{% static 'My_portfolio/acadamics.css' %}">
 </head>
 <body>
+
 <header class="navbar">
     <div class="container">
-        <h1 class="logo">{{intro.logo_name}}</h1>
+        <h1 class="logo">{{ intro.logo_name }}</h1>
         <nav>
             <ul class="nav-links">
                 <li><a href="/">Home</a></li>
@@ -29,33 +30,48 @@
         <p>Education, results, certifications & resume</p>
     </div>
 </section>
+
+<!-- ===== EDUCATION ===== -->
 <section id="education" class="section">
     <div class="container">
         <h3 class="section-title">Education</h3>
         <div class="edu-horizontal">
-             {% for  acadamic in acadamics %}
+
+            {% for acadamic in acadamics %}
             <div class="edu-item">
                 <span class="edu-dot"></span>
-               
+
                 <div class="edu-card">
-             <a href="{{ acadamic.result_pdf.url }}" target="_blank"><h4>{{acadamic.qualification}}</h4></a>
-                    <p>{{acadamic.board}}</p>
-                    <p>{{acadamic.institute_name}}</p>
+
+                    {% if acadamic.result_pdf %}
+                        <a href="{{ acadamic.result_pdf.url }}" target="_blank">
+                            <h4>{{ acadamic.qualification }}</h4>
+                        </a>
+                    {% else %}
+                        <h4>{{ acadamic.qualification }}</h4>
+                    {% endif %}
+
+                    <p>{{ acadamic.board }}</p>
+                    <p>{{ acadamic.institute_name }}</p>
 
                     <div class="edu-score">
                         <span>Percentage</span>
-                        <strong>{{acadamic.percentage}}%</strong>
+                        <strong>{{ acadamic.percentage }}%</strong>
                     </div>
 
                     <div class="edu-progress">
-                        <div class="edu-progress-fill" style="width: {{acadamic.percentage}}%;"></div>
+                        <div class="edu-progress-fill" style="width: {{ acadamic.percentage }}%;"></div>
                     </div>
-                  <span class="edu-year">{{acadamic.start_year}} – {{acadamic.end_year}}</span>
+
+                    <span class="edu-year">
+                        {{ acadamic.start_year }} – {{ acadamic.end_year }}
+                    </span>
                 </div>
             </div>
+
             <div class="edu-line"></div>
-                {% endfor %}
-            
+            {% endfor %}
+
         </div>
     </div>
 </section>
@@ -67,7 +83,11 @@
 
         <div class="result-grid">
             {% for sem in semester %}
-            <a href="{{ sem.semester_result.url }}" target="_blank"  class="result-card">Semester {{sem.semester_number}}</a>
+                {% if sem.semester_result %}
+                    <a href="{{ sem.semester_result.url }}" target="_blank" class="result-card">
+                        Semester {{ sem.semester_number }}
+                    </a>
+                {% endif %}
             {% endfor %}
         </div>
     </div>
@@ -77,14 +97,24 @@
 <section id="certificates" class="section">
     <div class="container">
         <h3 class="section-title">Certificates</h3>
+
         {% for certificate in certificates %}
-        <ul class="certificate-list">
-            <li><a href="{{ certificate.certificate_pdf.url }}" target="_blank">{{certificate.certificate_name}}</a></li>
-        </ul>
+            {% if certificate.certificate_pdf %}
+                <ul class="certificate-list">
+                    <li>
+                        <a href="{{ certificate.certificate_pdf.url }}" target="_blank">
+                            {{ certificate.certificate_name }}
+                        </a>
+                    </li>
+                </ul>
+            {% endif %}
         {% endfor %}
+
     </div>
 </section>
 
+<!-- ===== RESUME ===== -->
+{% if intro.resume_pdf %}
 <section id="resume" class="section alt-section">
     <div class="container resume-center">
         <a href="{{ intro.resume_pdf.url }}" class="resume-card" download>
@@ -93,6 +123,8 @@
         </a>
     </div>
 </section>
+{% endif %}
+
 <footer class="footer">
     <p>© 2026 {{ intro.footer_name }}</p>
 </footer>
