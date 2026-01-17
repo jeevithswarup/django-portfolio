@@ -3,9 +3,6 @@ import os
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
-git add .
-git commit -m "Remove dotenv for Render deploy"
-git push
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
