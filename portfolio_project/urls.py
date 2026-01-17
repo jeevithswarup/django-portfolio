@@ -1,13 +1,6 @@
 
 from django.contrib import admin
 from django.urls import path,include
-# from ninja import NinjaAPI
-# from My_portfolio.api import router as portfolio_router
-
-# api = NinjaAPI()
-
-# api.add_router("", portfolio_router)
-# urls.py
 from django.contrib.auth.models import User
 from django.http import HttpResponse
 
@@ -25,5 +18,5 @@ def create_superuser(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('My_portfolio.urls')),
-    path('create-admin/', create_superuser),
+    path('create-admin/',create_superuser),
 ]
