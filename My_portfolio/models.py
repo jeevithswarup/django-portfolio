@@ -19,7 +19,7 @@ class Projects(models.Model):
 
 class Skills(models.Model):
         skill_name=models.CharField(max_length=200)
-        icon=models.CharField()
+        icon=models.CharField(max_length=50)
         #skill level later
         def __str__(self):
              return self.skill_name

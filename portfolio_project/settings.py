@@ -1,4 +1,5 @@
 from pathlib import Path
+import dj_database_url
 import os
 
 
@@ -89,11 +90,13 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 #     }
 # }
 # Database
-import dj_database_url
+
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL')
+        default=os.environ.get('DATABASE_URL'),
+        conn_max_age=600,
+        ssl_require=True
     )
 }
 
