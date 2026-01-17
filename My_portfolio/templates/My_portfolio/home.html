@@ -47,7 +47,9 @@
         </div>
      
         <div class="hero-image">
+            {% if intro.profile_img %}
             <img src="{{ intro.profile_img.url}}" alt="{{ intro.profile_name}}">
+            {% endif %}
         </div>
          
     </div>
