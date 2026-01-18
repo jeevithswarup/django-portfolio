@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Academics</title>
-    <link rel="stylesheet" href="{% static 'My_portfolio/acadamics.css' %}">
+    <link rel="stylesheet" href="{% static 'My_portfolio/academics.css' %}">
 </head>
 <body>
 
@@ -37,34 +37,34 @@
         <h3 class="section-title">Education</h3>
         <div class="edu-horizontal">
 
-            {% for acadamic in acadamics %}
+            {% for academic in academics %}
             <div class="edu-item">
                 <span class="edu-dot"></span>
 
                 <div class="edu-card">
 
-                    {% if acadamic.result_pdf %}
-                        <a href="{{ acadamic.result_pdf.url }}" target="_blank">
-                            <h4>{{ acadamic.qualification }}</h4>
+                    {% if academic.result_pdf %}
+                        <a href="{{ academic.result_pdf.url }}" target="_blank">
+                            <h4>{{ academic.qualification }}</h4>
                         </a>
                     {% else %}
-                        <h4>{{ acadamic.qualification }}</h4>
+                        <h4>{{ academic.qualification }}</h4>
                     {% endif %}
 
-                    <p>{{ acadamic.board }}</p>
-                    <p>{{ acadamic.institute_name }}</p>
+                    <p>{{ academic.board }}</p>
+                    <p>{{ academic.institute_name }}</p>
 
                     <div class="edu-score">
                         <span>Percentage</span>
-                        <strong>{{ acadamic.percentage }}%</strong>
+                        <strong>{{ academic.percentage }}%</strong>
                     </div>
 
                     <div class="edu-progress">
-                        <div class="edu-progress-fill" style="width: {{ acadamic.percentage }}%;"></div>
+                        <div class="edu-progress-fill" style="width: {{ academic.percentage }}%;"></div>
                     </div>
 
                     <span class="edu-year">
-                        {{ acadamic.start_year }} – {{ acadamic.end_year }}
+                        {{ academic.start_year }} – {{ academic.end_year }}
                     </span>
                 </div>
             </div>

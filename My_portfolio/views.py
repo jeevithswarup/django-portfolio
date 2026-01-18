@@ -34,13 +34,13 @@ def Project_details(request,id):
     return render(request,'My_portfolio/Project.html',{"project": project,"intro":intro})
 
 def Acadamics(request):
-    acadamics=AcademicQualification.objects.all()
+    academics=AcademicQualification.objects.all()
     certificates=Certificates.objects.all()
     semester=Semester.objects.all()
     intro=Intro.objects.first()
 
     return render(request,'My_portfolio/acadamics.html',{
-        'acadamics':acadamics,
+        'acadamics':academics,
         'certificates':certificates,
         'semester':semester,
         'intro':intro,

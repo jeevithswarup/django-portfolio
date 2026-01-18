@@ -130,6 +130,9 @@
     color: var(--text-main);
     margin-bottom: 3rem;
 }
+.about{
+    text-align: center;
+}
 
 /* Grid */
 .projects-grid {
