@@ -145,9 +145,9 @@ CLOUDINARY_STORAGE = {
     'RESOURCE_TYPE':"auto",
 }
 
-CLOUDINARY_STORAGE.update{
-  "SECURE":True
- }
+CLOUDINARY_STORAGE.update({
+  "SECURE":True,
+ })
 
 
 
