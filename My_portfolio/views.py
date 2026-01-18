@@ -33,14 +33,14 @@ def Project_details(request,id):
     project=get_object_or_404(project,id=id)
     return render(request,'My_portfolio/Project.html',{"project": project,"intro":intro})
 
-def Acadamics(request):
+def Academics(request):
     academics=AcademicQualification.objects.all()
     certificates=Certificates.objects.all()
     semester=Semester.objects.all()
     intro=Intro.objects.first()
 
-    return render(request,'My_portfolio/acadamics.html',{
-        'acadamics':academics,
+    return render(request,'My_portfolio/academics.html',{
+        'academics':academics,
         'certificates':certificates,
         'semester':semester,
         'intro':intro,
