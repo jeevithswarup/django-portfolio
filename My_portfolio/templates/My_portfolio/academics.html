@@ -44,8 +44,7 @@
                 <div class="edu-card">
 
                     {% if academic.result_pdf %}
-                        <a href="https://docs.google.com/gview?url={{ academic.result_pdf.url }}&embedded=true"
-                           target="_blank">
+                        <a href="{{ academic.result_pdf.url }}" target="_blank">
                             <h4>{{ academic.qualification }}</h4>
                         </a>
                     {% else %}
@@ -85,9 +84,7 @@
         <div class="result-grid">
             {% for sem in semester %}
                 {% if sem.semester_result %}
-                    <a href="https://docs.google.com/gview?url={{ sem.semester_result.url }}&embedded=true"
-                       target="_blank"
-                       class="result-card">
+                    <a href="{{ sem.semester_result.url }}" target="_blank" class="result-card">
                         Semester {{ sem.semester_number }}
                     </a>
                 {% endif %}
@@ -105,8 +102,7 @@
             {% if certificate.certificate_pdf %}
                 <ul class="certificate-list">
                     <li>
-                        <a href="https://docs.google.com/gview?url={{ certificate.certificate_pdf.url }}&embedded=true"
-                           target="_blank">
+                        <a href="{{ certificate.certificate_pdf.url }}" target="_blank">
                             {{ certificate.certificate_name }}
                         </a>
                     </li>
@@ -121,10 +117,8 @@
 {% if intro.resume_pdf %}
 <section id="resume" class="section alt-section">
     <div class="container resume-center">
-        <a href="https://docs.google.com/gview?url={{ intro.resume_pdf.url }}&embedded=true"
-           target="_blank"
-           class="resume-card">
-            <h3>View Resume</h3>
+        <a href="{{ intro.resume_pdf.url }}" class="resume-card" download>
+            <h3>Download Resume</h3>
             <p>PDF Format</p>
         </a>
     </div>
