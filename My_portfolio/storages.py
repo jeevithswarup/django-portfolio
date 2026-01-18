@@ -8,4 +8,5 @@ class ImageStorage(MediaCloudinaryStorage):
 
 
 class PDFStorage(RawMediaCloudinaryStorage):
-    pass
+    resource_type = "raw"
+    access_mode = "public"
