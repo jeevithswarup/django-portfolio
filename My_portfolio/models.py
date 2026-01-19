@@ -24,7 +24,7 @@ class Projects(models.Model):
 
     project_pdf = models.FileField(
         upload_to="project_pdfs/",
-        storage=PDFStorage(),
+        storage=ImageStorage(),
         blank=True,
         null=True
     )
@@ -94,7 +94,7 @@ class AcademicQualification(models.Model):
      # result_pdf=models.FileField(upload_to='results/',blank=True,null=True)
      result_pdf = models.FileField(
         upload_to='results/',
-        storage=PDFStorage(),
+        storage=ImageStorage(),
         blank=True,
         null=True
     )
@@ -106,7 +106,7 @@ class Certificates(models.Model):
      # certificate_pdf=models.FileField(upload_to='certificates/',blank=True,null=True)    
      certificate_pdf = models.FileField(
         upload_to='certificates/',
-        storage=PDFStorage(),
+        storage=ImageStorage(),
         blank=True,
         null=True
     )
@@ -125,7 +125,7 @@ class Semester(models.Model):
      # semester_result=models.FileField(upload_to='sem_results/',blank=True,null=True)
      semester_result = models.FileField(
         upload_to='sem_results/',
-        storage=PDFStorage(),
+        storage=ImageStorage(),
         blank=True,
         null=True
     )
