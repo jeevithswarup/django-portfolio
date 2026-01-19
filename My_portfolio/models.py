@@ -1,6 +1,6 @@
 
 from django.db import models
-from .storages import ImageStorage, PDFStorage
+from .storages import ImageStorage
 from cloudinary.models import CloudinaryField
 
 
