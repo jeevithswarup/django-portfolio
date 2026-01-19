@@ -1,6 +1,8 @@
 
 from django.db import models
 from .storages import ImageStorage, PDFStorage
+from cloudinary.models import CloudinaryField
+
 
 
 class Projects(models.Model):
@@ -63,11 +65,15 @@ class Intro(models.Model):
         )
         about_me=models.TextField()
      #    resume_pdf=models.FileField(upload_to='resume_pdf/',blank=True,null=True)
-        resume_pdf = models.FileField(
-        upload_to='resume_pdf/',
-        storage=PDFStorage(),
-        blank=True,
-        null=True
+    #     resume_pdf = models.FileField(
+    #     upload_to='resume_pdf/',
+    #     storage=PDFStorage(),
+    #     blank=True,
+    #     null=True
+    # )
+        resume_pdf = CloudinaryField(
+        resource_type="image",
+        folder="resume_pdf"
     )
         footer_name=models.CharField(max_length=50,blank=True)
         def __str__(self):
