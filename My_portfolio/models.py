@@ -64,12 +64,6 @@ class Intro(models.Model):
         )
         about_me=models.TextField()
         resume_pdf=models.FileField(upload_to='resume_pdf/',blank=True,null=True)
-        resume_pdf = models.FileField(
-        upload_to='resume_pdf/',
-        storage=ImageStorage(),
-        blank=True,
-        null=True
-    )
      
         footer_name=models.CharField(max_length=50,blank=True)
         def __str__(self):
