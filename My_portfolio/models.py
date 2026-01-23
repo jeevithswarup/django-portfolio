@@ -24,7 +24,6 @@ class Projects(models.Model):
 
     project_pdf = models.FileField(
         upload_to="project_pdfs/",
-        storage=ImageStorage(),
         blank=True,
         null=True
     )
@@ -67,6 +66,7 @@ class Intro(models.Model):
         resume_pdf=models.FileField(upload_to='resume_pdf/',blank=True,null=True)
         resume_pdf = models.FileField(
         upload_to='resume_pdf/',
+        storage=ImageStorage(),
         blank=True,
         null=True
     )
