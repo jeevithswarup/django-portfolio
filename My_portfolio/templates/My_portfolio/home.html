@@ -119,7 +119,7 @@
             <h2 class="section-title">Contact Me</h2>
 
             <form method="POST" action="{% url 'contact' %}" class="contact-form">
-                 {% csrf_token %}
+                {% csrf_token %}
                 <input type="text" placeholder="Your Name" name="name">
                 <input type="email" placeholder="Your Email" name="email">
                 <textarea placeholder="Your Message" name="message"></textarea>

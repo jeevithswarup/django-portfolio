@@ -67,7 +67,6 @@ class Intro(models.Model):
         resume_pdf=models.FileField(upload_to='resume_pdf/',blank=True,null=True)
         resume_pdf = models.FileField(
         upload_to='resume_pdf/',
-        storage=ImageStorage(),
         blank=True,
         null=True
     )
