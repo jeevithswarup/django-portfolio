@@ -63,7 +63,13 @@ class Intro(models.Model):
         null=True
         )
         about_me=models.TextField()
-        resume_pdf=models.FileField(upload_to='resume_pdf/',blank=True,null=True)
+    
+        resume_pdf = CloudinaryField(
+    resource_type="raw",
+    folder="resume_pdf",
+    blank=True,
+    null=True
+)
      
         footer_name=models.CharField(max_length=50,blank=True)
         def __str__(self):
