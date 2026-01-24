@@ -6,7 +6,7 @@ def Home(request):
      projects = Projects.objects.all()   
      skills =Skills.objects.all()
      intro=Intro.objects.first()
-     urls=SocialMediaLink.objects.first()
+     urls=SocialMediaLink.objects.first() or SocialMediaLink()
      context={
          'projects': projects,
           'skills': skills,
