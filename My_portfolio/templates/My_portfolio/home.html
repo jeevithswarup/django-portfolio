@@ -130,22 +130,23 @@
 
   <section class="social-grid">
 <div class="social-links">
-    {% if urls.linkedIn %}
+
+    {% if urls and urls.linkedIn %}
     <a href="{{ urls.linkedIn }}" target="_blank" class="linkedin">
         <i class="fab fa-linkedin-in"></i>
     </a>
     {% endif %}
-    {% if urls.github %}
+    {% if urls and urls.github %}
     <a href="{{urls.github}}" target="_blank" class="github">
         <i class="fab fa-github"></i>
     </a>
 {% endif %}
-      {% if urls.whatsapp %}
+      {% if urls and urls.whatsapp %}
     <a href="{{urls.whatsapp}}" target="_blank" class="whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
 {% endif %}
-{% if urls.email %}
+{% if urls and urls.email %}
     <a href="mailto:{{urls.email}}" class="email">
         <i class="fas fa-envelope"></i>
     </a>
