@@ -11,7 +11,7 @@ class Intro(models.Model):
         #profile_img=models.ImageField(upload_to='profile_img/', blank=True, null=True)
         profile_img = models.ImageField(upload_to='profile_img/',storage=ImageStorage(),blank=True,null=True)
         about_me=models.TextField()
-        resume_pdf = CloudinaryField(resource_type="raw",folder="resume_pdf",blank=True,null=True)
+        resume_pdf =models.FileField(upload_to="resume_pdf/",storage=ImageStorage(),blank=True,null=True)
         footer_name=models.CharField(max_length=50,blank=True)
         def __str__(self):
                return self.profile_name
