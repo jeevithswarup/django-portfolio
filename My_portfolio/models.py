@@ -78,6 +78,7 @@ class Semester(models.Model):
         related_name="semesters"
     )
      semester_number=models.PositiveSmallIntegerField()
+     cgpa=models.DecimalField(max_digits=5,decimal_places=2,null=True,blank=True)
      semester_pdf = CloudinaryField(resource_type="raw", folder="semester_pdfs", blank=True, null=True)
      def __str__(self):
          return  f"{self.qualification} - Semester {self.semester_number}"
