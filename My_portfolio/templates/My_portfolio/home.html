@@ -7,15 +7,16 @@
     <title>Jeevith</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="{% static 'My_portfolio/home.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-
 </head>
 <body>
     
     <header class="navbar">
         <div class="container">
+            {% if intro %}
             <h1 class="logo">{{ intro.logo_name }}</h1>
+            {% else %}
+            <h1 class="logo">My Portfolio</h1>
+            {% endif %}
             <nav>
                 <ul class="nav-links">
                     <li><a href="#home">Home</a></li>
@@ -33,12 +34,15 @@
     <div class="container hero-content">
 
         <div class="hero-text">
-            <h2>Hi, I'm <span>{{intro.profile_name}}</span></h2>
-            <h3>{{intro.role}}</h3>
-            <p>
-                {{intro.introduction}}
-            </p>
-  
+            {% if intro %}
+            <h2>Hi, I'm <span>{{ intro.profile_name }}</span></h2>
+            <h3>{{ intro.role }}</h3>
+            <p>{{ intro.introduction }}</p>
+            {% else %}
+            <h2>Hi, I'm a Full Stack Developer</h2>
+            <h3>Role</h3>
+            <p>Introduction text here.</p>
+            {% endif %}
 
             <div class="hero-buttons">
                 <a href="#projects" class="btn">View Projects</a>
@@ -47,114 +51,120 @@
         </div>
      
         <div class="hero-image">
-            {% if intro.profile_img %}
-            <img src="{{ intro.profile_img.url}}" alt="{{ intro.profile_name}}">
+            {% if intro and intro.profile_img %}
+            <img src="{{ intro.profile_img.url }}" alt="{{ intro.profile_name }}">
+            {% else %}
+            <img src="{% static 'My_portfolio/default_profile.png' %}" alt="Default Profile">
             {% endif %}
         </div>
          
     </div>
-   
 </section>
 
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-            <p>
-                {{intro.about_me}}
-            </p>
-        </div>
-    </section>
-    
-
-    <section id="skills" class="skills">
-        <div class="container">
-            <h2 class="section-title">Skills</h2>
-<div class="skills-grid">
-    {% for skill  in skills %}
-    <div class="skill-card">
-        
-        <div class="icon-img">
-            <i class="{{skill.icon}}"></i>
-            <p>{{skill.skill_name}}</p>
-        </div>
-        
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="section-title">About Me</h2>
+        <p>
+            {% if intro %}
+            {{ intro.about_me }}
+            {% else %}
+            About me text goes here.
+            {% endif %}
+        </p>
     </div>
-    {% endfor %}
-</div>
- </section>
+</section>
+
+<section id="skills" class="skills">
+    <div class="container">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            {% for skill in skills %}
+            <div class="skill-card">
+                <div class="icon-img">
+                    <i class="{{ skill.icon }}"></i>
+                    <p>{{ skill.skill_name }}</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>No skills added yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
 <section id="projects" class="projects">
     <div class="container">
         <h2 class="section-title">Projects</h2>
         <div class="projects-grid">
             {% for project in projects %}
             <div class="project-card">
-
-                <!-- Project Image -->
                 <div class="project-image">
                     {% if project.image %}
-                    <img src="{{ project.image.url }}" alt="{{ project.project_name }}">
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
                     {% else %}
-                    <img src="{% static 'project_images/secure_authentication.jpg' %}" alt="Default project image">
+                    <img src="{% static 'My_portfolio/default_project.jpg' %}" alt="Default project image">
                     {% endif %}
                 </div>
 
-                <!-- Content -->
                 <div class="project-content">
                     <h3>{{ project.title }}</h3>
                     <p>{{ project.short_description }}</p>
-
-                    <a href="{% url 'Project' project.id %}" class="project-btn">
-                        View project →
-                    </a>
+                    <a href="{% url 'Project' project.id %}" class="project-btn">View project →</a>
                 </div>
             </div>
+            {% empty %}
+            <p>No projects added yet.</p>
             {% endfor %}
         </div>
     </div>
-    </section>
-
-
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2 class="section-title">Contact Me</h2>
-
-            <form method="POST" action="{% url 'contact' %}" class="contact-form">
-                {% csrf_token %}
-                <input type="text" placeholder="Your Name" name="name">
-                <input type="email" placeholder="Your Email" name="email">
-                <textarea placeholder="Your Message" name="message"></textarea>
-                <button type="submit" class="btn">Send Message</button>
-            </form>
-        </div>
-    </section>
-
-  <section class="social-grid">
-<div class="social-links">
-
-    {% if urls and urls.linkedIn %}
-    <a href="{{ urls.linkedIn }}" target="_blank" class="linkedin">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-    {% endif %}
-    {% if urls and urls.github %}
-    <a href="{{urls.github}}" target="_blank" class="github">
-        <i class="fab fa-github"></i>
-    </a>
-{% endif %}
-      {% if urls and urls.whatsapp %}
-    <a href="{{urls.whatsapp}}" target="_blank" class="whatsapp">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-{% endif %}
-{% if urls and urls.email %}
-    <a href="mailto:{{urls.email}}" class="email">
-        <i class="fas fa-envelope"></i>
-    </a>
-{% endif %}
-</div>
 </section>
-    <footer class="footer">
-        <p>© 2026 {{intro.footer_name}}. All rights reserved.</p>
-    </footer>
+
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title">Contact Me</h2>
+
+        <form method="POST" action="{% url 'contact' %}" class="contact-form">
+            {% csrf_token %}
+            <input type="text" placeholder="Your Name" name="name">
+            <input type="email" placeholder="Your Email" name="email">
+            <textarea placeholder="Your Message" name="message"></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<section class="social-grid">
+    <div class="social-links">
+        {% if urls and urls.linkedIn %}
+        <a href="{{ urls.linkedIn }}" target="_blank" class="linkedin">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+        {% endif %}
+        {% if urls and urls.github %}
+        <a href="{{ urls.github }}" target="_blank" class="github">
+            <i class="fab fa-github"></i>
+        </a>
+        {% endif %}
+        {% if urls and urls.whatsapp %}
+        <a href="{{ urls.whatsapp }}" target="_blank" class="whatsapp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        {% endif %}
+        {% if urls and urls.email %}
+        <a href="mailto:{{ urls.email }}" class="email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        {% endif %}
+    </div>
+</section>
+
+<footer class="footer">
+    {% if intro %}
+    <p>© 2026 {{ intro.footer_name }}. All rights reserved.</p>
+    {% else %}
+    <p>© 2026 My Portfolio. All rights reserved.</p>
+    {% endif %}
+</footer>
+
 </body>
 </html>
