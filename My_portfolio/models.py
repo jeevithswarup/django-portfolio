@@ -88,10 +88,10 @@ class KeyFeature(models.Model):
         return self.feature_text     
     
 class SocialMediaLink(models.Model):
-     linkedIn=models.URLField(blank=True)
-     github=models.URLField(blank=True)
-     whatsapp=models.URLField(blank=True)
-     email=models.EmailField(blank=True)
-
+     linkedIn=models.URLField(null=True,blank=True)
+     github=models.URLField(null=True,blank=True)
+     whatsapp=models.URLField(null=True,blank=True)
+     email=models.EmailField(null=True,blank=True)
+     
      
 
