@@ -6,11 +6,12 @@ def Home(request):
      projects = Projects.objects.all()   
      skills =Skills.objects.all()
      intro=Intro.objects.first()
+     urls=SocialMediaLink.objects.first()
      context={
          'projects': projects,
           'skills': skills,
           'intro' : intro,
-    
+          'urls':urls,
       }
      return render(request,'My_portfolio/home.html',context)        
 def contact(request):
