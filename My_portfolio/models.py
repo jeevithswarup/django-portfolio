@@ -87,6 +87,7 @@ class KeyFeature(models.Model):
     def __str__(self):
         return self.feature_text     
     
+
 class SocialMediaLink(models.Model):
     linkedin = models.URLField(null=True, blank=True, default="")
     github = models.URLField(null=True, blank=True, default="")

@@ -127,8 +127,7 @@
             </form>
         </div>
     </section>
-
-{% if urls.linkedin or urls.github or urls.whatsapp or urls.email %}
+{% if urls and (urls.linkedin or urls.github or urls.whatsapp or urls.email) %}
 <section class="social-grid">
   <div class="social-links">
 
@@ -159,6 +158,7 @@
   </div>
 </section>
 {% endif %}
+
     <footer class="footer">
         <p>© 2026 {{intro.footer_name}}. All rights reserved.</p>
     </footer>
