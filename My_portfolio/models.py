@@ -38,7 +38,8 @@ class Projects(models.Model):
 #     image=models.ImageField(upload_to="project_image/",blank=True,null=True)
 #     project_pdf = models.FileField(upload_to="project_pdfs/",blank=True,null=True)
     image = models.ImageField(upload_to="project_image/",storage=ImageStorage(),blank=True,null=True)
-    project_pdf = models.FileField(upload_to="project_pdfs/",blank=True,null=True)
+    project_pdf = CloudinaryField(resource_type="raw", folder="project_pdfs", blank=True, null=True)
+
     github_link=models.URLField(blank=True)
     def __str__(self):
         return self.title
@@ -60,12 +61,12 @@ class AcademicQualification(models.Model):
      percentage=models.DecimalField(max_digits=5,decimal_places=2)
      start_year=models.PositiveIntegerField()
      end_year=models.PositiveIntegerField()
-     result_pdf=models.FileField(upload_to='results/',blank=True,null=True)
+     result_pdf= CloudinaryField(resource_type="raw", folder="result_pdfs", blank=True, null=True)
      def __str__(self):
           return self.qualification
 
 class Certificates(models.Model):
-     certificate_pdf=models.FileField(upload_to='certificates/',blank=True,null=True)    
+     certificate_pdf = CloudinaryField(resource_type="raw", folder="certificate_pdfs", blank=True, null=True)
      certificate_name=models.CharField(max_length=50)
      def __str__(self):
           return self.certificate_name
@@ -77,7 +78,7 @@ class Semester(models.Model):
         related_name="semesters"
     )
      semester_number=models.PositiveSmallIntegerField()
-     semester_result=models.FileField(upload_to='sem_results/',blank=True,null=True)
+     semester_pdf = CloudinaryField(resource_type="raw", folder="semester_pdfs", blank=True, null=True)
      def __str__(self):
          return  f"{self.qualification} - Semester {self.semester_number}"
      

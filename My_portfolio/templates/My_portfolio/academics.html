@@ -83,8 +83,8 @@
 
         <div class="result-grid">
             {% for sem in semester %}
-                {% if sem.semester_result %}
-                    <a href="{{ sem.semester_result.url }}" target="_blank" class="result-card">
+                {% if sem.semester_pdf %}
+                    <a href="{{ sem.semester_pdf.url }}" target="_blank" class="result-card">
                         Semester {{ sem.semester_number }}
                     </a>
                 {% endif %}
