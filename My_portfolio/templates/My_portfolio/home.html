@@ -131,26 +131,26 @@
   <section class="social-grid">
 <div class="social-links">
 
-    {% if urls and urls.linkedin %}
+    
     <a href="{{ urls.linkedin }}" target="_blank" class="linkedin">
         <i class="fab fa-linkedin-in"></i>
     </a>
-    {% endif %}
-    {% if urls and urls.github %}
+
+ 
     <a href="{{urls.github}}" target="_blank" class="github">
         <i class="fab fa-github"></i>
     </a>
-{% endif %}
-      {% if urls and urls.whatsapp %}
+
+  
     <a href="https://wa.me/{{ urls.whatsapp }}" target="_blank" class="whatsapp">
         <i class="fab fa-whatsapp"></i>
     </a>
-{% endif %}
-{% if urls and urls.email %}
+
+
     <a href="mailto:{{urls.email}}" class="email">
         <i class="fas fa-envelope"></i>
     </a>
-{% endif %}
+
 </div>
 </section>
     <footer class="footer">
