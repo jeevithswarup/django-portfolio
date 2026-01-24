@@ -180,18 +180,10 @@ CLOUDINARY_STORAGE = {
 }
 
 
-# import cloudinary
-
-# cloudinary.config(
-#     cloud_name="dsrvfmlpx",
-#     api_key="",
-#     api_secret="",
-#     secure=True
-# )
 
 
 
-# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
