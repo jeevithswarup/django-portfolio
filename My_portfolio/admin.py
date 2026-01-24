@@ -23,4 +23,4 @@ class KeyFeatureInline(admin.TabularInline):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = ('title',)
     inlines = [KeyFeatureInline]
-admin.site.register(SocialMediaLink)     
+# admin.site.register(SocialMediaLink)     
