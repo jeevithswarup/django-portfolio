@@ -8,7 +8,6 @@ class Intro(models.Model):
         profile_name=models.CharField(max_length=50)
         role=models.CharField(max_length=100,default='Full Stack Web-Developer')
         introduction=models.TextField()
-        #profile_img=models.ImageField(upload_to='profile_img/', blank=True, null=True)
         profile_img = models.ImageField(upload_to='profile_img/',storage=ImageStorage(),blank=True,null=True)
         about_me=models.TextField()
         resume_img = models.ImageField(upload_to='resume_img/',storage=ImageStorage(),blank=True,null=True)
@@ -35,11 +34,8 @@ class Projects(models.Model):
     tech_stack=models.CharField(max_length=300)
     Category=models.CharField(max_length=50,default='Backend Developer')
     status=models.CharField(max_length=50,default='In Progress')
-#     image=models.ImageField(upload_to="project_image/",blank=True,null=True)
-#     project_pdf = models.FileField(upload_to="project_pdfs/",blank=True,null=True)
     image = models.ImageField(upload_to="project_image/",storage=ImageStorage(),blank=True,null=True)
-    project_pdf = CloudinaryField(resource_type="raw", folder="project_pdfs", blank=True, null=True)
-
+    project_pdf = models.ImageField(upload_to="project_pdf_image/",storage=ImageStorage(),blank=True,null=True) 
     github_link=models.URLField(blank=True)
     def __str__(self):
         return self.title
@@ -61,12 +57,12 @@ class AcademicQualification(models.Model):
      percentage=models.DecimalField(max_digits=5,decimal_places=2)
      start_year=models.PositiveIntegerField()
      end_year=models.PositiveIntegerField()
-     result_pdf= CloudinaryField(resource_type="raw", folder="result_pdfs", blank=True, null=True)
+     result_pdf=models.ImageField(upload_to="result_img/",storage=ImageStorage(),blank=True,null=True) 
      def __str__(self):
           return self.qualification
 
 class Certificates(models.Model):
-     certificate_pdf = CloudinaryField(resource_type="raw", folder="certificate_pdfs", blank=True, null=True)
+     certificate_pdf = models.ImageField(upload_to="certificate_image/",storage=ImageStorage(),blank=True,null=True) 
      certificate_name=models.CharField(max_length=50)
      def __str__(self):
           return self.certificate_name
@@ -79,7 +75,7 @@ class Semester(models.Model):
     )
      semester_number=models.PositiveSmallIntegerField()
      cgpa=models.DecimalField(max_digits=5,decimal_places=2,null=True,blank=True)
-     semester_pdf = CloudinaryField(resource_type="raw", folder="semester_pdfs", blank=True, null=True)
+     semester_pdf = models.ImageField(upload_to="semester_img/",storage=ImageStorage(),blank=True,null=True) 
      def __str__(self):
          return  f"{self.qualification} - Semester {self.semester_number}"
      
